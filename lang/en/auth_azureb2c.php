@@ -24,25 +24,25 @@
 $string['pluginname'] = 'Azure AD B2C Connect';
 $string['auth_azureb2cdescription'] = 'The Azure AD B2C Connect plugin provides single-sign-on functionality using Azure Active Directory (Azure AD) B2C identity providers.';
 
-$string['cfg_authendpoint_key'] = 'Authorization Endpoint';
-$string['cfg_authendpoint_desc'] = 'The URI of the Authorization endpoint from your identity provider to use.';
+$string['cfg_authendpoint_key'] = 'Authorization endpoint';
+$string['cfg_authendpoint_desc'] = 'The URI of the authorization endpoint from your identity provider to use.';
 $string['cfg_autoappend_key'] = 'Auto-Append';
 $string['cfg_autoappend_desc'] = 'Automatically append this string when logging in users using the "Resource Owner Password Credentials" authentication method. This is useful when your identity provider requires a common domain, but don\'t want to require users to type it in when logging in. For example, if the full Azure AD B2C Connect user is "james@example.com" and you enter "@example.com" here, the user will only have to enter "james" as their username. <br /><b>Note:</b> In the case where conflicting usernames exist - i.e. a Moodle user exists wth the same name, the priority of the authentication plugin is used to determine which user wins out.';
 
-$string['cfg_scope_key'] = 'Azure B2C Scope';
-$string['cfg_scope_desc'] = 'Enter the Scope value for Azure Active Directory (Azure AD) B2C, which will be used to authenticate users.';
+$string['cfg_scope_key'] = 'Azure B2C scope';
+$string['cfg_scope_desc'] = 'Enter the scope value for azure active directory (azure AD) B2C, which will be used to authenticate users.';
 
-$string['cfg_resetpassendpoint_key'] = 'Forgot Password Endpoint';
-$string['cfg_resetpassendpoint_desc'] = 'The URI of the Forgot Password endpoint from Azure AD B2C, used to reset the password';
+$string['cfg_resetpassendpoint_key'] = 'Forgot password endpoint';
+$string['cfg_resetpassendpoint_desc'] = 'The URI of the forgot password endpoint from Azure AD B2C, used to reset the password';
 
 $string['cfg_clientid_key'] = 'Client ID';
-$string['cfg_clientid_desc'] = 'Your registered Client ID on the identity provider';
-$string['cfg_clientsecret_key'] = 'Client Secret';
-$string['cfg_clientsecret_desc'] = 'Your registered Client Secret on the identity provider. On some providers, it is also referred to as a key.';
-$string['cfg_domainhint_key'] = 'Domain Hint';
+$string['cfg_clientid_desc'] = 'Your registered client ID on the identity provider';
+$string['cfg_clientsecret_key'] = 'Client secret';
+$string['cfg_clientsecret_desc'] = 'Your registered client secret on the identity provider. On some providers, it is also referred to as a key.';
+$string['cfg_domainhint_key'] = 'Domain hint';
 $string['cfg_domainhint_desc'] = 'When using the "Authorization Code" authentication method, pass this value as the "domain_hint" parameter. "domain_hint" is used by some Azure AD B2C Connect providers to make the login process easier for users. Check with your provider to see whether they support this parameter.';
-$string['cfg_err_invalidauthendpoint'] = 'Invalid Authorization Endpoint';
-$string['cfg_err_invalidtokenendpoint'] = 'Invalid Token Endpoint';
+$string['cfg_err_invalidauthendpoint'] = 'Invalid authorization endpoint';
+$string['cfg_err_invalidtokenendpoint'] = 'Invalid token endpoint';
 $string['cfg_err_invalidclientid'] = 'Invalid client ID';
 $string['cfg_err_invalidclientsecret'] = 'Invalid client secret';
 $string['cfg_icon_key'] = 'Icon';
@@ -62,24 +62,24 @@ $string['cfg_iconalt_userlock'] = 'User with lock icon';
 $string['cfg_iconalt_plus'] = 'Plus icon';
 $string['cfg_iconalt_check'] = 'Checkmark icon';
 $string['cfg_iconalt_rightarrow'] = 'Right-facing arrow icon';
-$string['cfg_customicon_key'] = 'Custom Icon';
+$string['cfg_customicon_key'] = 'Custom icon';
 $string['cfg_customicon_desc'] = 'If you\'d like to use your own icon, upload it here. This overrides any icon chosen above. <br /><br /><b>Notes on using custom icons:</b><ul><li>This image will <b>not</b> be resized on the login page, so we recommend uploading an image no bigger than 35x35 pixels.</li><li>If you have uploaded a custom icon and want to go back to one of the stock icons, click the custom icon in the box above, then click "Delete", then click "OK", then click "Save Changes" at the bottom of this form. The selected stock icon will now appear on the Moodle login page.</li></ul>';
 $string['cfg_debugmode_key'] = 'Record debug messages';
 $string['cfg_debugmode_desc'] = 'If enabled, information will be logged to the Moodle log that can help in identifying problems.';
-$string['cfg_loginflow_key'] = 'Authentication Method';
-$string['cfg_loginflow_authcode'] = 'Authorization Code Flow (recommended)';
+$string['cfg_loginflow_key'] = 'Authentication method';
+$string['cfg_loginflow_authcode'] = 'Authorization code flow (recommended)';
 $string['cfg_loginflow_authcode_desc'] = 'Using this flow, the user clicks the name of the identity provider (See "Provider Name" above) on the Moodle login page and is redirected to the provider to log in. Once successfully logged in, the user is redirected back to Moodle where the Moodle login takes place transparently. This is the most standardized, secure way for the user log in.';
-$string['cfg_loginflow_rocreds'] = 'Resource Owner Password Credentials Grant';
+$string['cfg_loginflow_rocreds'] = 'Resource owner password credentials grant';
 $string['cfg_loginflow_rocreds_desc'] = 'Using this flow, the user enters their username and password into the Moodle login form like they would with a manual login. This will authorize the user with the identity provider, but will not create a session on the identity provider\'s site. For example, if using Azure AD B2C with Azure AD B2C Connect, the user will be logged in to Moodle but not the Azure AD B2C web applications. Using the authorization request is recommended if you want users to be logged in to both Moodle and the identity provider.  Note that not all identity providers support this flow. This option should only be used when other authorization grant types are not available.';
 $string['cfg_azureb2cresource_key'] = 'Resource';
 $string['cfg_azureb2cresource_desc'] = 'The Azure AD B2C Connect resource for which to send the request.';
-$string['cfg_opname_key'] = 'Provider Name';
+$string['cfg_opname_key'] = 'Provider name';
 $string['cfg_opname_desc'] = 'This is an end-user-facing label that identifies the type of credentials the user must use to login. This label is used throughout the user-facing portions of this plugin to identify your provider.';
 $string['cfg_redirecturi_key'] = 'Redirect URI';
 $string['cfg_redirecturi_desc'] = 'This is the URI to register as the "Redirect URI". Your Azure AD B2C Connect identity provider should ask for this when registering Moodle as a client. <br /><b>NOTE:</b> You must enter this in your Azure AD B2C Connect provider *exactly* as it appears here. Any difference will prevent logins using Azure AD B2C Connect.';
-$string['cfg_tokenendpoint_key'] = 'Token Endpoint';
+$string['cfg_tokenendpoint_key'] = 'Token endpoint';
 $string['cfg_tokenendpoint_desc'] = 'The URI of the token endpoint from your identity provider to use.';
-$string['cfg_userrestrictions_key'] = 'User Restrictions';
+$string['cfg_userrestrictions_key'] = 'User restrictions';
 $string['cfg_userrestrictions_desc'] = 'Only allow users to log in that meet certain restrictions. <br /><b>How to use user restrictions: </b> <ul><li>Enter a <a href="https://en.wikipedia.org/wiki/Regular_expression">regular expression</a> pattern that matches the usernames of users you want to allow.</li><li>Enter one pattern per line</li><li>If you enter multiple patterns a user will be allowed if they match ANY of the patterns.</li><li>The character "/" should be escaped with "\".</li><li>If you don\'t enter any restrictions above, all users that can log in to the Azure AD B2C Connect provider will be accepted by Moodle.</li><li>Any user that does not match any entered pattern(s) will be prevented from logging in using Azure AD B2C Connect.</li></ul>';
 $string['event_debug'] = 'Debug message';
 
@@ -122,15 +122,15 @@ $string['errorazureb2ccall'] = 'Error in Azure AD B2C Connect. Please check logs
 $string['errorazureb2ccall_message'] = 'Error in Azure AD B2C Connect: {$a}';
 $string['errorinvalidredirect_message'] = 'The URL you are trying to redirect to does not exist.';
 
-$string['eventuserauthed'] = 'User Authorized with Azure AD B2C Connect';
+$string['eventuserauthed'] = 'User authorized with Azure AD B2C Connect';
 $string['eventusercreated'] = 'User created with Azure AD B2C Connect';
 $string['eventuserconnected'] = 'User connected to Azure AD B2C Connect';
-$string['eventuserloggedin'] = 'User Logged In with Azure AD B2C Connect';
+$string['eventuserloggedin'] = 'User logged in with Azure AD B2C Connect';
 $string['eventuserdisconnected'] = 'User disconnected from Azure AD B2C Connect';
 
 $string['azureb2c:manageconnection'] = 'Allow Azure AD B2C Connection and Disconnection';
 $string['azureb2c:manageconnectionconnect'] = 'Allow Azure AD B2C Connection';
-$string['azureb2c:manageconnectiondisconnect'] = 'Allow OpenID Disconnection';
+$string['azureb2c:manageconnectiondisconnect'] = 'Allow Azure AD B2C Disconnection';
 
 $string['privacy:metadata:auth_azureb2c'] = 'Azure AD B2C Connect Authentication';
 $string['privacy:metadata:auth_azureb2c_prevlogin'] = 'Previous login methods to undo Azure AD B2C connections';
