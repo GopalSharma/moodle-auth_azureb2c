@@ -476,7 +476,12 @@ class base {
         $tokenrec->scope = !empty($tokenparams['scope']) ? $tokenparams['scope'] : 'openid profile email';
         $tokenrec->resource = !empty($tokenparams['resource']) ? $tokenparams['resource'] : $this->config->azureb2cresource;
         $tokenrec->authcode = $authparams['code'];
-        $tokenrec->token = $tokenparams['access_token'];
+        $tokenrec->token = null;
+        if (isset($tokenparams['access_token'])) {
+            $tokenrec->token = $tokenparams['access_token'];
+        } else if (isset($tokenparams['id_token'])) {
+            $tokenrec->token = $tokenparams['id_token'];
+        }
         if (!empty($tokenparams['expires_on'])) {
             $tokenrec->expiry = $tokenparams['expires_on'];
         } else if (isset($tokenparams['expires_in'])) {
@@ -502,7 +507,12 @@ class base {
         $tokenrec = new \stdClass;
         $tokenrec->id = $tokenid;
         $tokenrec->authcode = $authparams['code'];
-        $tokenrec->token = $tokenparams['access_token'];
+        $tokenrec->token = null;
+        if (isset($tokenparams['access_token'])) {
+            $tokenrec->token = $tokenparams['access_token'];
+        } else if (isset($tokenparams['id_token'])) {
+            $tokenrec->token = $tokenparams['id_token'];
+        }
         if (!empty($tokenparams['expires_on'])) {
             $tokenrec->expiry = $tokenparams['expires_on'];
         } else if (isset($tokenparams['expires_in'])) {
