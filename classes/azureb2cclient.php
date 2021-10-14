@@ -137,7 +137,6 @@ class azureb2cclient {
             'response_mode' => 'form_post',
             'resource' => $this->resource,
             'response_type' => 'code',
-            'prompt' => 'login',
             'state' => $this->getnewstate($nonce, $stateparams),
             'redirect_uri' => $this->redirecturi,
             'ui_locales' => $lang
