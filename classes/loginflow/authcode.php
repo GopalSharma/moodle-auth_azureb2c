@@ -90,7 +90,7 @@ class authcode extends \auth_azureb2c\loginflow\base {
      * @return mixed Determined by loginflow.
      */
     public function handleredirect() {
-        global $CFG, $SESSION;
+        global $CFG, $SESSION, $USER;
 
         $state = $this->getazureb2cparam('state');
         $code = $this->getazureb2cparam('code');
@@ -111,7 +111,9 @@ class authcode extends \auth_azureb2c\loginflow\base {
                     $urltogo = $SESSION->wantsurl;
                     unset($SESSION->wantsurl);
                 } else {
-                    $urltogo = new \moodle_url('/');
+                    set_user_preference('auth_azureb2c_edit', 0);
+                    $userid = $USER->id;
+                    $urltogo = new \moodle_url("/user/profile.php?id=$userid");
                 }
                 redirect($urltogo);
                 die();

@@ -35,6 +35,9 @@ $string['cfg_scope_desc'] = 'Enter the scope value for azure active directory (a
 $string['cfg_resetpassendpoint_key'] = 'Forgot password endpoint';
 $string['cfg_resetpassendpoint_desc'] = 'The URI of the forgot password endpoint from Azure AD B2C, used to reset the password';
 
+$string['cfg_editprofileendpoint_key'] = 'Edit profile endpoint';
+$string['cfg_editprofileendpoint_desc'] = 'The URI of the edit profile endpoint from Azure AD B2C, used to edit the profile field.';
+
 $string['cfg_clientid_key'] = 'Client ID';
 $string['cfg_clientid_desc'] = 'Your registered client ID on the identity provider';
 $string['cfg_clientsecret_key'] = 'Client secret';

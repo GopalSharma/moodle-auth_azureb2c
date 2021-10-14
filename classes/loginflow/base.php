@@ -131,6 +131,21 @@ class base {
                 }
             }
         }
+        
+        $country = $idtoken->claim('country');
+        if (!empty($country)) {
+            $countries = get_string_manager()->get_list_of_countries();
+            foreach ($countries as  $countrykey => $countryvalue) {
+                $countryb2c = $country;
+                $countrymoodle = $countryvalue;
+                if($countrymoodle == $countryb2c)
+                    $countryval = $countrykey;
+            }
+    }
+
+        $gender = $idtoken->claim('extension_WP_Gender');
+        $userinfo['lastnamephonetic'] = $gender;
+
         $lang = $idtoken->claim('language');
         if (!empty($lang)) {
             $userinfo['lang'] = $lang;
