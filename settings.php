@@ -43,22 +43,22 @@ $settings->add(new admin_setting_configtext('auth_azureb2c/clientsecret', $confi
 
 $configkey = new lang_string('cfg_authendpoint_key', 'auth_azureb2c');
 $configdesc = new lang_string('cfg_authendpoint_desc', 'auth_azureb2c');
-$configdefault = 'https://login.microsoftonline.com/common/oauth2/authorize?p=signinandsignup_policy_name';
+$configdefault = 'https://tenantname.b2clogin.com/common/oauth2/authorize?p=signinandsignup_policy_name';
 $settings->add(new admin_setting_configtext('auth_azureb2c/authendpoint', $configkey, $configdesc, $configdefault, PARAM_TEXT));
 
 $configkey = new lang_string('cfg_resetpassendpoint_key', 'auth_azureb2c');
 $configdesc = new lang_string('cfg_resetpassendpoint_desc', 'auth_azureb2c');
-$configdefault = "https://login.microsoftonline.com/common/oauth2/authorize?p=reset_policy_name";
+$configdefault = "https://tenantname.b2clogin.com/common/oauth2/authorize?p=reset_policy_name";
 $settings->add(new admin_setting_configtext('auth_azureb2c/resetpassendpoint', $configkey, $configdesc, $configdefault, PARAM_TEXT));
 
 $configkey = new lang_string('cfg_editprofileendpoint_key', 'auth_azureb2c');
 $configdesc = new lang_string('cfg_editprofileendpoint_desc', 'auth_azureb2c');
-$configdefault = "https://login.microsoftonline.com/common/oauth2/authorize?p=edit_policy_name";
+$configdefault = "https://tenantname.b2clogin.com/common/oauth2/authorize?p=edit_policy_name";
 $settings->add(new admin_setting_configtext('auth_azureb2c/editprofileendpoint', $configkey, $configdesc, $configdefault, PARAM_TEXT));
 
 $configkey = new lang_string('cfg_tokenendpoint_key', 'auth_azureb2c');
 $configdesc = new lang_string('cfg_tokenendpoint_desc', 'auth_azureb2c');
-$configdefault = 'https://login.microsoftonline.com/common/oauth2/token?p=signinandsignup_policy_name';
+$configdefault = 'https://tenantname.b2clogin.com/common/oauth2/token?p=signinandsignup_policy_name';
 $settings->add(new admin_setting_configtext('auth_azureb2c/tokenendpoint', $configkey, $configdesc, $configdefault, PARAM_TEXT));
 
 $configkey = new lang_string('cfg_azureb2cresource_key', 'auth_azureb2c');
