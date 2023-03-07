@@ -95,6 +95,7 @@ $string['errorauthdisconnectifmanual'] = 'If using the manual login method, ente
 $string['errorauthdisconnectinvalidmethod'] = 'Invalid login method received.';
 $string['errorauthgeneral'] = 'There was a problem logging you in. Please contact your administrator for assistance.';
 $string['errorauthinvalididtoken'] = 'Invalid id_token received.';
+$string['errorauthloginfaileddupemail'] = 'Invalid login: Your account has the same email address as another user on this Moodle, duplicate email addresses are blocked.';
 $string['errorauthloginfailednouser'] = 'Invalid login: User not found in Moodle. If this site has the "authpreventaccountcreation" setting enabled, this may mean you need an administrator to create an account for you first.';
 $string['errorauthnoauthcode'] = 'No authorization code was received from the identity server. The error logs may have more information.';
 $string['errorauthnocreds'] = 'Please configure Azure AD B2C Connect client credentials.';
