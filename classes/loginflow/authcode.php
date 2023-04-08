@@ -465,7 +465,7 @@ class authcode extends \auth_azureb2c\loginflow\base {
             $matchedwith = $this->check_for_matched($username);
             if (!empty($matchedwith)) {
                 $matchedwith->aadupn = $username;
-                throw new \moodle_exception('errorusermatched', 'local_o365', null, $matchedwith);
+                throw new \moodle_exception('errorazureb2ccall_message', 'auth_azureb2c', null, 'Failed to match user; matchedwith='.$matchedwith);
             }
             $username = trim(\core_text::strtolower($username));
             $tokenrec = $this->createtoken($azureb2cuniqid, $username, $authparams, $tokenparams, $idtoken);
@@ -477,7 +477,7 @@ class authcode extends \auth_azureb2c\loginflow\base {
                     if (!$CFG->allowaccountssameemail) {
                         $info = $this->get_userinfo($username);
                         if ($DB->count_records('user', array('email' => $info['email'], 'deleted' => 0)) > 0) {
-                            throw new moodle_exception('errorauthloginfaileddupemail', 'auth_oidc', null, null, '1'); 
+                            throw new moodle_exception('errorauthloginfaileddupemail', 'auth_azureb2c', null, null, '1'); 
                         }
                     }
                     $user = create_user_record($username, null, 'azureb2c');
