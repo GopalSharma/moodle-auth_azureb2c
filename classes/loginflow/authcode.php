@@ -438,6 +438,8 @@ class authcode extends \auth_azureb2c\loginflow\base {
             }
             $user = $DB->get_record('user', ['id' => $tokenrec->userid]);
             if (empty($user)) {
+                // Usually the result of a failed auth - clean it up.
+                $DB->delete_record('auth_azureb2c_token', ['azureb2cuniqid' => $azureb2cuniqid]);
                 // ERROR.
                 echo 'ERROR2';die();
             }
