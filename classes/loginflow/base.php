@@ -98,9 +98,8 @@ class base {
 
         $idtoken = \auth_azureb2c\jwt::instance_from_encoded($tokenrec->idtoken);
 
-        // B2C provides custom field mapping, skip azureb2c mapping if B2C is present.
         $o365installed = $DB->get_record('config_plugins', ['plugin' => 'local_o365', 'name' => 'version']);
-        if (!empty($o365installed)) {
+        if (!empty($o365installed) && $this->config->o365mapping === '1') {
             return [];
         }
 
