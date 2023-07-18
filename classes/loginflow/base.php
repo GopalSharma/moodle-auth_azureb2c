@@ -108,11 +108,43 @@ class base {
         $firstname = $idtoken->claim('given_name');
         if (!empty($firstname)) {
             $userinfo['firstname'] = $firstname;
+        } elseif (!empty($name = $idtoken->claim('name'))) {
+            $names = array_filter(
+                array_map(
+                    function ($name) {
+                        return trim($name);
+                    },
+                    explode(' ', $name, 2)
+                ),
+                function ($name) {
+                    return !empty($name);
+                }
+            );
+            $givenname = trim(reset($names));
+            if (!empty($givenname)) {
+                $userinfo['firstname'] = $givenname;
+            }
         }
 
         $lastname = $idtoken->claim('family_name');
         if (!empty($lastname)) {
             $userinfo['lastname'] = $lastname;
+        } elseif (!empty($name = $idtoken->claim('name'))) {
+            $names = array_filter(
+                array_map(
+                    function ($name) {
+                        return trim($name);
+                    },
+                    explode(' ', $name, 2)
+                ),
+                function ($name) {
+                    return !empty($name);
+                }
+            );
+            $surname = array_pop($names);
+            if (!empty($surname)) {
+                $userinfo['lastname'] = $surname;
+            }
         }
 
         $email = $idtoken->claim('emails');
