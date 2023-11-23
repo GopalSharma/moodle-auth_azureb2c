@@ -433,13 +433,29 @@ class authcode extends \auth_azureb2c\loginflow\base {
             // Already connected user.
 
             if (empty($tokenrec->userid)) {
-                // ERROR.
-                echo 'ERROR1';die();
-            }
-            $user = $DB->get_record('user', ['id' => $tokenrec->userid]);
-            if (empty($user)) {
-                // ERROR.
-                echo 'ERROR2';die();
+                // Existing token record, but missing the user ID.
+                $user = $DB->get_record('user', ['username' => $tokenrec->username]);
+
+                if (empty($user)) {
+                    // Token exists, but it doesn't have a valid username.
+                    // In this case, delete the token, and try to process login again.
+                    $DB->delete_records('auth_azureb2c_token', ['id' => $tokenrec->id]);
+                    return $this->handlelogin($azureb2cuniqid, $authparams, $tokenparams, $idtoken);
+                }
+                $tokenrec->userid = $user->id;
+                $DB->update_record('auth_azureb2c_token', $tokenrec);
+            } else {
+                // Existing token with a user ID.
+                $user = $DB->get_record('user', ['id' => $tokenrec->userid]);
+                if (empty($user)) {
+                    $failurereason = AUTH_LOGIN_NOUSER;
+                    $eventdata = ['other' => ['username' => $tokenrec->username, 'reason' => $failurereason]];
+                    $event = \core\event\user_login_failed::create($eventdata);
+                    $event->trigger();
+                    // Token is invalid, delete it.
+                    $DB->delete_records('auth_azureb2c_token', ['id' => $tokenrec->id]);
+                    return $this->handlelogin($azureb2cuniqid, $authparams, $tokenparams, $idtoken);
+                }
             }
             $username = $user->username;
             $this->updatetoken($tokenrec->id, $authparams, $tokenparams);
@@ -477,7 +493,7 @@ class authcode extends \auth_azureb2c\loginflow\base {
                     if (!$CFG->allowaccountssameemail) {
                         $info = $this->get_userinfo($username);
                         if ($DB->count_records('user', array('email' => $info['email'], 'deleted' => 0)) > 0) {
-                            throw new moodle_exception('errorauthloginfaileddupemail', 'auth_oidc', null, null, '1'); 
+                            throw new \moodle_exception('errorauthloginfaileddupemail', 'auth_azureb2c', null, null, '1');
                         }
                     }
                     $user = create_user_record($username, null, 'azureb2c');

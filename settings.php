@@ -94,6 +94,11 @@ $label = new lang_string('cfg_debugmode_key', 'auth_azureb2c');
 $desc = new lang_string('cfg_debugmode_desc', 'auth_azureb2c');
 $settings->add(new \admin_setting_configcheckbox('auth_azureb2c/debugmode', $label, $desc, '0'));
 
+
+$label = new lang_string('cfg_o365mapping_key', 'auth_azureb2c');
+$desc = new lang_string('cfg_o365mapping_desc', 'auth_azureb2c');
+$settings->add(new \admin_setting_configcheckbox('auth_azureb2c/o365mapping', $label, $desc, '1'));
+
 $configkey = new lang_string('cfg_icon_key', 'auth_azureb2c');
 $configdesc = new lang_string('cfg_icon_desc', 'auth_azureb2c');
 $configdefault = 'auth_azureb2c:o365';
